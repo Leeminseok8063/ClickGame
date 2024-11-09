@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa7020f6f1d93e469fe3071ed2e0636, type: 3}
   m_Name: Char11
   m_EditorClassIdentifier: 
-  creatureName: "\uADC0\uC871 \uAE30\uC0AC\uB2E8"
-  creatureDesc: "\uC81C\uAD6D\uC758 \uADC0\uC871\uC758 \uC790\uC81C\uB85C \uC774\uB8E8\uC5B4\uC9C4
-    \uADC0\uC871 \uAE30\uC0AC\uB300"
-  health: 250
-  damage: 60
-  attackDelay: 20
-  skillCount: 40
+  creatureName: "\uBCF4\uBCD1\uB300"
+  creatureDesc: "\uC81C\uAD6D\uC758 \uB4E0\uB4E0\uD55C \uBCF4\uB8E8\uC785\uB2C8\uB2E4."
+  health: 300
+  damage: 10
+  attackDelay: 2
+  skillCount: 5
   combatType: 1
-  skillType: 3
+  skillType: 2
   reward: 0

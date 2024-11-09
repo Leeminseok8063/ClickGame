@@ -6,5 +6,6 @@ public class GameSceneLoader : MonoBehaviour
     {
         GameManager.Instance.Init();
         ObjectManager.Instance.Init();
+        SpawnManager.Instance.Init();
     }
 }

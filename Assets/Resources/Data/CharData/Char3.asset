@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fa7020f6f1d93e469fe3071ed2e0636, type: 3}
-  m_Name: Char01
+  m_Name: Char3
   m_EditorClassIdentifier: 
-  creatureName: "\uC6A9\uC0AC"
-  creatureDesc: "\uC5EC\uD589\uC911\uC778 \uC6A9\uC0AC\uC774\uB2E4."
-  health: 100
-  damage: 20
-  attackDelay: 2
-  skillCount: 20
+  creatureName: "\uB098\uC774\uD2B8"
+  creatureDesc: "\uAC15\uB825\uD55C \uC7A5\uBE44\uB85C \uBB34\uC7A5\uD55C \uAE30\uC0AC."
+  health: 300
+  damage: 15
+  attackDelay: 3
+  skillCount: 10
   combatType: 1
   skillType: 2
   reward: 0
