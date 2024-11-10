@@ -11,4 +11,14 @@ namespace Assets.Scripts.Utils
     {
         public void SetData(CreatureData data);
     }
+
+    public interface IDamagable
+    {
+        public void TakeDamage(float damage);
+    }
+
+    public interface ISpawnable
+    {
+        public void IsSpawned();
+    }
 }

@@ -12,13 +12,15 @@ public class ObjectManager : Singleton<ObjectManager>
     public void Init()
     {
         ScriptableObject[] charDatas = Resources.LoadAll<ScriptableObject>("Data/CharData/");
-        Functions.SortObject(charDatas);
         ScriptableObject[] mobDatas = Resources.LoadAll<ScriptableObject>("Data/MobData/");
-        Functions.SortObject(mobDatas);
         GameObject[] charaters = Resources.LoadAll<GameObject>("Prefabs/01.Char/");
-        Functions.SortObject(charaters);
         GameObject[] monsters = Resources.LoadAll<GameObject>("Prefabs/02.Mob/");
+
+        Functions.SortObject(charDatas);
+        Functions.SortObject(mobDatas);
+        Functions.SortObject(charaters);
         Functions.SortObject(monsters);
+        
         charList = SetCreature<Character>(charaters, charDatas);
         mobList = SetCreature<Monster>(monsters, mobDatas);
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts.Utils;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnManager : Singleton<SpawnManager>
@@ -6,6 +7,9 @@ public class SpawnManager : Singleton<SpawnManager>
     private Dictionary<string, ObjectPool> pools = new Dictionary<string, ObjectPool>();
     private int charCount;
     private int mobCount;
+
+    public int CharCount { get { return charCount; } }
+    public int MobCount { get { return mobCount; } }
 
     public void Init()
     {
@@ -16,7 +20,7 @@ public class SpawnManager : Singleton<SpawnManager>
         charCount = charList.Count;
         mobCount = mobList.Count;
 
-        SpawnMob("Char3");
+        SpawnCreature("Mob1");
     }
 
     private void CreateTypeOfPool(string typeName, List<GameObject> lists)
@@ -28,11 +32,16 @@ public class SpawnManager : Singleton<SpawnManager>
             pools.Add($"{typeName}{index}", new ObjectPool($"{typeName}{index}", this.transform, tempObject));
         }
     }
-    public void SpawnMob(string name)
+    
+    public void SpawnCreature(string name)
     {
         GameObject temp = pools[name].Spawn();
-        temp.transform.position = new Vector3(6f, -0.6f, 0);
-        temp.transform.position = new Vector3(1.5f, -0.6f, 0);
+        temp.GetComponent<ISpawnable>().IsSpawned();
+    }
+
+    public void DespawnMob(GameObject _object)
+    {
+        pools[_object.name].Despawn(_object);
     }
 }
 

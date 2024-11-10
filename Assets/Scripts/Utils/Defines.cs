@@ -20,4 +20,16 @@ public class Defines : MonoBehaviour
         BUFF,
         DEBUFF,
     }
+
+    public enum OBJECTSTATE
+    {
+        NONE,
+        IDLE,
+        MOVE,
+        ATTACK,
+        SKILL,
+        DEAD,
+    }
+
+    
 }
