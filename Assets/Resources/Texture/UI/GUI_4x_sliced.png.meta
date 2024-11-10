@@ -1055,7 +1055,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_4x_sliced_45
+      name: Arrow
       rect:
         serializedVersion: 2
         x: 116
@@ -4331,10 +4331,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_4x_sliced_201
+      name: 00.HealthIamage
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 40
         width: 32
         height: 32
@@ -4373,7 +4373,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_4x_sliced_203
+      name: 00.StrengthIamage
       rect:
         serializedVersion: 2
         x: 72
@@ -4394,7 +4394,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_4x_sliced_204
+      name: 00.AttackSpeedIamage
       rect:
         serializedVersion: 2
         x: 112
@@ -4625,7 +4625,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_4x_sliced_215
+      name: 00.CoinImage
       rect:
         serializedVersion: 2
         x: 40
@@ -4782,9 +4782,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      00.AttackSpeedIamage: 1284387599
+      00.CoinImage: 572506158
+      00.HealthIamage: 1956288755
       00.MobHealthBar: 2109232667
       00.Paper01: -480999385
       00.PlayerHealthbar: -2127904578
+      00.StrengthIamage: -1839068934
+      Arrow: -550797175
       BuyCharIcon: -1805090312
       GUI_4x_sliced_0: -1721375968
       GUI_4x_sliced_1: 1655021575
@@ -4899,10 +4904,7 @@ TextureImporter:
       GUI_4x_sliced_2: 1294337712
       GUI_4x_sliced_20: -572751126
       GUI_4x_sliced_200: 623792280
-      GUI_4x_sliced_201: 1956288755
       GUI_4x_sliced_202: -1515664983
-      GUI_4x_sliced_203: -1839068934
-      GUI_4x_sliced_204: 1284387599
       GUI_4x_sliced_205: 1003975454
       GUI_4x_sliced_206: -1250786995
       GUI_4x_sliced_207: 275827060
@@ -4914,7 +4916,6 @@ TextureImporter:
       GUI_4x_sliced_212: -253335300
       GUI_4x_sliced_213: 948416400
       GUI_4x_sliced_214: 933270757
-      GUI_4x_sliced_215: 572506158
       GUI_4x_sliced_216: 1191576629
       GUI_4x_sliced_217: 1345343958
       GUI_4x_sliced_219: 894780490
@@ -4944,7 +4945,6 @@ TextureImporter:
       GUI_4x_sliced_42: 1390348509
       GUI_4x_sliced_43: -1884408752
       GUI_4x_sliced_44: -1888292391
-      GUI_4x_sliced_45: -550797175
       GUI_4x_sliced_46: -1020053168
       GUI_4x_sliced_47: 1011652661
       GUI_4x_sliced_48: -1271054372

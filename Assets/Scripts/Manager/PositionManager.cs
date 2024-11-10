@@ -16,6 +16,7 @@ public class PositionManager : Singleton<PositionManager>
     public Vector3 MobStartPos { get { return mobStart; } }
     public Vector3 MobDestPos { get { return mobDest; } }
     public float CharXpos { get { return fixXpostion; } }
+    public List<bool> CapsuleEmpty { get { return capsuleEmpty; } }
 
     public void Init()
     {

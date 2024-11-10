@@ -34,6 +34,7 @@ public class Monster : Creature
             animator.SetTrigger(isDamaged);
             currentHealth = Mathf.Max(currentHealth - damage, 0f);
             UIManager.Instance.MainUIPanel.UpdateMobHealthBar(currentHealth / maxHealth);
+            GameManager.Instance.GetTreasure((int)(currentReward * 0.001));
             if (currentHealth == 0) StartCoroutine(Dead());
         }      
     }
@@ -42,6 +43,8 @@ public class Monster : Creature
     {
         animator.SetTrigger(isDead);
         state = Defines.OBJECTSTATE.DEAD;
+        GameManager.Instance.GetTreasure(currentReward);
+        
         yield return new WaitForSeconds(4f);
         SpawnManager.Instance.Despawn(this.gameObject);
         GameManager.Instance.NextPhase();

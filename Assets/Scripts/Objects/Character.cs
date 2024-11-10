@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class Character : Creature
 {
-    private int positionID;
+    private int capsuleIndex;
     private float localTimer;
+
+    public int CapsuleIndex { get { return capsuleIndex; } set { capsuleIndex = value; } }
 
     private void Update()
     {
         UpdateMove();
+        
         localTimer += Time.deltaTime;
         if(localTimer > attackDelay)
         {
             localTimer = 0;
-            StartCoroutine(Attack());
+            StartCoroutine(Attack(true));
         }
     }
 
@@ -32,16 +35,24 @@ public class Character : Creature
 
     public void ClickAction()
     {
+        if (!gameObject.activeSelf) return;
         localTimer = 0f;
         StartCoroutine(Attack());
     }
 
-    private IEnumerator Attack()
+    private IEnumerator Attack(bool isAutomatic = false)
     {
+        if(!isAutomatic)
+        {
+            GameObject destActor = GameManager.Instance.inputController.currentClickActor;
+            if (destActor == null || !destActor.TryGetComponent<Monster>(out Monster temp))
+                yield break;
+        }
+        
         if (behaviorLock) yield break;
         GameObject mob = GameManager.Instance.currentMonster;
         
-        if (!mob.activeSelf || mob.GetComponent<Monster>().State == Defines.OBJECTSTATE.DEAD) 
+        if (!mob.activeSelf || !(mob.GetComponent<Monster>().State == Defines.OBJECTSTATE.IDLE)) 
             yield break;
         IDamagable target = mob.GetComponent<IDamagable>();
 
@@ -49,9 +60,9 @@ public class Character : Creature
         {
             animator.SetTrigger(isSkill);
             currentSkillCounter = maxSkillCounter;
-            target.TakeDamage(damage * 10);
             behaviorLock = true;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
+            target.TakeDamage(damage * 10);
             behaviorLock = false;
             yield break;
         }
@@ -59,5 +70,18 @@ public class Character : Creature
         currentSkillCounter--;
         animator.SetTrigger(isAttack);
         target.TakeDamage(damage);
+    }
+
+    public IEnumerator Exit()
+    {
+        Vector3 temp = destPos;
+        destPos = startPos;
+        startPos = temp;
+        dist = destPos - startPos;
+        state = Defines.OBJECTSTATE.MOVE;
+        yield return new WaitForSeconds(2f);
+        
+        SpawnManager.Instance.Despawn(this.gameObject);
+        PositionManager.Instance.CapsuleEmpty[capsuleIndex] = true;
     }
 }

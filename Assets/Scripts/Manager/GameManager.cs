@@ -8,11 +8,13 @@ public class GameManager : Singleton<GameManager>
     private int currentLevel = 0;
     public InputController inputController;
 
-    public Dictionary<string, GameObject> currentPlayers = new Dictionary<string, GameObject>();
+    public Dictionary<int, GameObject> currentPlayers = new Dictionary<int, GameObject>();
     public GameObject currentMonster;
 
-    public int treasureCount = 0;
+    public int treasureCount = 10000;
     public int priceGetChar = 10000;
+    public float test = 0;
+    
     public void Init()
     {
         GameObject inputModule = Instantiate(Resources.Load<GameObject>("Prefabs/03.Module/InputModule"));
@@ -22,17 +24,29 @@ public class GameManager : Singleton<GameManager>
 
     public void Start()
     {
-        treasureCount = 100000;
         NextPhase();
-        SpawnManager.Instance.SpawnChar(1);
-    }
+        GetChar();
+    } 
 
     public void GetChar()
     {
         if (treasureCount < priceGetChar) return;
 
-        treasureCount -= priceGetChar;
-        SpawnManager.Instance.SpawnChar(Random.Range(1, SpawnManager.Instance.CharCount + 1));
+        GameObject spawned = SpawnManager.Instance.SpawnChar(Random.Range(1, SpawnManager.Instance.CharCount + 1));
+        if (spawned == null) return;
+
+        Character spChar = spawned.GetComponent<Character>();
+        currentPlayers.Add(spChar.CapsuleIndex, spawned);
+        UseTreasure(priceGetChar);
+    }
+
+    public void ExitChar(GameObject charObject)
+    {
+        if (currentPlayers.Count <= 1) return;
+        if (!charObject.TryGetComponent<Character>(out Character tempChar)) return;
+
+        currentPlayers.Remove(tempChar.CapsuleIndex);
+        StartCoroutine(tempChar.Exit());
     }
 
     public void NextPhase()
@@ -42,5 +56,17 @@ public class GameManager : Singleton<GameManager>
             currentLevel++;
             currentMonster = SpawnManager.Instance.SpawnMonster(currentLevel);
         }
+    }
+
+    public void UseTreasure(int val)
+    {
+        treasureCount -= val;
+        UIManager.Instance.MainUIPanel.UpdateUserTreasueUpdate();
+    }
+
+    public void GetTreasure(int val)
+    {
+        treasureCount += val;
+        UIManager.Instance.MainUIPanel.UpdateUserTreasueUpdate();
     }
 }

@@ -20,4 +20,4 @@ MonoBehaviour:
   skillCount: 3
   combatType: 1
   skillType: 1
-  reward: 0
+  reward: 10000
