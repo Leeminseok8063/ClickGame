@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa7020f6f1d93e469fe3071ed2e0636, type: 3}
   m_Name: Mob1
   m_EditorClassIdentifier: 
-  creatureName: "\uB054\uCC0D\uD55C \uBC31\uADC0"
+  creatureName: "\uBB34\uB364\uC758 \uBC31\uADC0"
   creatureDesc: "\uC8FD\uC9C0 \uC54A\uB294 \uC5B8\uB370\uB4DC \uBF08\uB2E4\uADC0."
   health: 10000
   damage: 20

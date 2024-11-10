@@ -1,3 +1,4 @@
+using Assets.Scripts.Manager;
 using UnityEngine;
 
 public class GameSceneLoader : MonoBehaviour
@@ -7,6 +8,7 @@ public class GameSceneLoader : MonoBehaviour
         GameManager.Instance.Init();
         ObjectManager.Instance.Init();
         SpawnManager.Instance.Init();
-        CapsuleManager.Instance.Init(); 
+        PositionManager.Instance.Init(); 
+        UIManager.Instance.Init();
     }
 }

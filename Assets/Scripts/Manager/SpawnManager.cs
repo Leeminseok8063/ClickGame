@@ -19,8 +19,6 @@ public class SpawnManager : Singleton<SpawnManager>
         CreateTypeOfPool("Mob", mobList);
         charCount = charList.Count;
         mobCount = mobList.Count;
-
-        SpawnCreature("Mob1");
     }
 
     private void CreateTypeOfPool(string typeName, List<GameObject> lists)
@@ -32,14 +30,46 @@ public class SpawnManager : Singleton<SpawnManager>
             pools.Add($"{typeName}{index}", new ObjectPool($"{typeName}{index}", this.transform, tempObject));
         }
     }
-    
-    public void SpawnCreature(string name)
+
+    public GameObject SpawnMonster(int level)
     {
-        GameObject temp = pools[name].Spawn();
-        temp.GetComponent<ISpawnable>().IsSpawned();
+         GameObject Monster = Spawn
+         (
+            $"Mob{level}",
+            PositionManager.Instance.MobStartPos,
+            PositionManager.Instance.MobDestPos
+         );
+
+        return Monster;
     }
 
-    public void DespawnMob(GameObject _object)
+    public GameObject SpawnChar(int id)
+    {
+        int positionIndex = PositionManager.Instance.GetEmptyAcess();
+        if (positionIndex == -1) return null;
+
+        float XFixPos = PositionManager.Instance.CharXpos;
+        Vector3 destPos = PositionManager.Instance.CapsulePosition[positionIndex];
+        Vector3 startPos = new Vector3(XFixPos, destPos.y, destPos.z);
+
+        GameObject Player = Spawn
+        (
+            $"Char{id}",
+            startPos,
+            destPos
+        );
+
+        return Player;
+    }
+  
+    public GameObject Spawn(string name, Vector3 start, Vector3 dest)
+    {
+        GameObject temp = pools[name].Spawn();
+        temp.GetComponent<ISpawnable>().IsSpawned(start, dest);
+        return temp;
+    }
+
+    public void Despawn(GameObject _object)
     {
         pools[_object.name].Despawn(_object);
     }

@@ -19,6 +19,6 @@ namespace Assets.Scripts.Utils
 
     public interface ISpawnable
     {
-        public void IsSpawned();
+        public void IsSpawned(Vector3 start, Vector3 dest);
     }
 }

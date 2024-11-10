@@ -12,6 +12,7 @@ public class InputController : MonoBehaviour
         if(context.phase == InputActionPhase.Started)
         {
             MouseClicked?.Invoke();
+            Debug.Log("Å¬¸¯µÊ");
         }
     }
 

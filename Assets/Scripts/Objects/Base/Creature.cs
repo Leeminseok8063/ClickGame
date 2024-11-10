@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Utils;
 using UnityEngine;
+using static Defines;
 
 
 public class Creature : MonoBehaviour, ICreature, IDamagable, ISpawnable
@@ -7,7 +8,11 @@ public class Creature : MonoBehaviour, ICreature, IDamagable, ISpawnable
     protected Defines.OBJECTSTATE state = Defines.OBJECTSTATE.NONE;
     protected Animator animator;
     public CreatureData objectData;
-    
+    //========================
+    protected Vector2 dist = Vector2.zero;
+    protected Vector2 startPos = Vector2.zero;
+    protected Vector2 destPos = Vector2.zero;
+    //========================
     protected float maxHealth;
     protected float currentHealth;
     //========================
@@ -17,6 +22,9 @@ public class Creature : MonoBehaviour, ICreature, IDamagable, ISpawnable
     protected int maxSkillCounter;
     protected int currentSkillCounter;
     //========================
+    protected bool behaviorLock;
+
+    public Defines.OBJECTSTATE State { get { return state; } }
 
     protected int isMove    = Animator.StringToHash("isMove");
     protected int isDead    = Animator.StringToHash("isDead");
@@ -39,6 +47,20 @@ public class Creature : MonoBehaviour, ICreature, IDamagable, ISpawnable
         maxSkillCounter = objectData.skillCount;
         currentSkillCounter = maxSkillCounter;
         animator = GetComponentInChildren<Animator>();
+
+        switch(objectData.combatType)
+        {
+            case Defines.COMBATTYPE.MELEE:
+                animator.SetBool(isMelee, true);
+                break;
+            case Defines.COMBATTYPE.MAGIC:
+                animator.SetBool(isMagic, true);
+                break;
+            case Defines.COMBATTYPE.RANGE:
+                animator.SetBool(isRange, true);
+                break;
+
+        }
     }
 
     public void SetData(CreatureData data)
@@ -46,11 +68,32 @@ public class Creature : MonoBehaviour, ICreature, IDamagable, ISpawnable
         objectData = data;
     }
 
+    protected void UpdateMove()
+    {
+        if (transform.position == (Vector3)destPos) return;
+
+        if (dist.magnitude > 0.1f && !(state == Defines.OBJECTSTATE.IDLE))
+        {
+            transform.Translate(dist.normalized * 3f * Time.deltaTime);
+            dist = destPos - (Vector2)transform.position;
+            animator.SetBool(isMove, true);
+            behaviorLock = true;
+            state = Defines.OBJECTSTATE.MOVE;
+        }
+        else
+        {
+            transform.position = destPos;
+            animator.SetBool(isMove, false);
+            behaviorLock = false;
+            state = Defines.OBJECTSTATE.IDLE;
+        }
+    }
+
     public virtual void TakeDamage(float damage)
     {
         //NONE
     }
-    public virtual void IsSpawned()
+    public virtual void IsSpawned(Vector3 start, Vector3 dest)
     {
         //NONE
     }
