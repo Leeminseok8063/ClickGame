@@ -1,3 +1,4 @@
+using Assets.Scripts.Manager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,18 +41,37 @@ public class MainUIModule : MonoBehaviour
         GameManager.Instance.GetChar();
     }
 
+    public void PopUpStatePanel(Character target)
+    {
+        UIManager.Instance.IsPanel(true);
+        statePanel.SetActive(true);
+        nameText.text = target.objectData.creatureName;
+        descText.text = target.objectData.creatureDesc;
+        healthText.text = $"{target.currentHealth}/{target.maxHealth}";
+        attackDamageText.text = target.damage.ToString();
+        attackDelayText.text = target.attackDelay.ToString();
+    }
+
+    public void ExitStatePanel()
+    {
+        UIManager.Instance.IsPanel(false);
+        statePanel.SetActive(false);
+        GameManager.Instance.charController.EraseTargetObject();
+    }
+
     public void IncreaseHealthButton()
     {
-
+        Character target = GameManager.Instance.charController.targetObject;
+        healthText.text = $"{target.currentHealth}/{GameManager.Instance.charController.IncreaseHealth()}";
     }
 
     public void IncreaseAttackDelayButton()
     {
-
+        attackDelayText.text = GameManager.Instance.charController.IncreaseAttackDelay().ToString();
     }
 
     public void IncreaseAttackDamageButton()
     {
-
+        attackDamageText.text = GameManager.Instance.charController.IncreaseDamage().ToString();
     }
 }

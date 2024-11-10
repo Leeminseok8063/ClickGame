@@ -13,19 +13,18 @@ public class Creature : MonoBehaviour, ICreature, IDamagable, ISpawnable
     protected Vector2 startPos = Vector2.zero;
     protected Vector2 destPos = Vector2.zero;
     //========================
-    protected float maxHealth;
-    protected float currentHealth;
+    public float maxHealth;
+    public float currentHealth;
     //========================
-    protected float damage;
-    protected float attackDelay;
+    public float damage;
+    public float attackDelay;
     //========================
-    protected int maxSkillCounter;
-    protected int currentSkillCounter;
+    public int maxSkillCounter;
+    public int currentSkillCounter;
     //========================
     protected bool behaviorLock;
 
     public Defines.OBJECTSTATE State { get { return state; } }
-
     protected int isMove    = Animator.StringToHash("isMove");
     protected int isDead    = Animator.StringToHash("isDead");
     protected int isAttack  = Animator.StringToHash("isAttack");

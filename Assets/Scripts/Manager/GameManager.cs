@@ -1,12 +1,13 @@
+using Assets.Scripts.Controller;
 using Assets.Scripts.Manager;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class GameManager : Singleton<GameManager>
 {
     private int currentLevel = 0;
     public InputController inputController;
+    public CharController charController;
 
     public Dictionary<int, GameObject> currentPlayers = new Dictionary<int, GameObject>();
     public GameObject currentMonster;
@@ -20,6 +21,7 @@ public class GameManager : Singleton<GameManager>
         GameObject inputModule = Instantiate(Resources.Load<GameObject>("Prefabs/03.Module/InputModule"));
         inputModule.transform.parent = this.transform;
         inputController = inputModule.GetComponent<InputController>();
+        charController = this.gameObject.AddComponent<CharController>();
     }
 
     public void Start()
@@ -58,10 +60,12 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public void UseTreasure(int val)
+    public bool UseTreasure(int val)
     {
+        if (treasureCount < val) return false;
         treasureCount -= val;
         UIManager.Instance.MainUIPanel.UpdateUserTreasueUpdate();
+        return true;
     }
 
     public void GetTreasure(int val)
