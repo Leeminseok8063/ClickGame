@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Char3
   m_EditorClassIdentifier: 
   creatureName: "\uB098\uC774\uD2B8"
-  creatureDesc: "\uAC15\uB825\uD55C \uC7A5\uBE44\uB85C \uBB34\uC7A5\uD55C \uAE30\uC0AC."
-  health: 300
+  creatureDesc: "\uAC15\uB825\uD55C \uC7A5\uBE44\uB85C \uBB34\uC7A5\uD55C \uAE30\uC0AC,
+    \uD2BC\uD2BC\uD569\uB2C8\uB2E4!"
+  health: 800
   damage: 15
   attackDelay: 3
   skillCount: 10

@@ -62,7 +62,8 @@ public class MainUIModule : MonoBehaviour
     public void IncreaseHealthButton()
     {
         Character target = GameManager.Instance.charController.targetObject;
-        healthText.text = $"{target.currentHealth}/{GameManager.Instance.charController.IncreaseHealth()}";
+        float maxHealth = GameManager.Instance.charController.IncreaseHealth();
+        healthText.text = $"{target.currentHealth}/{maxHealth}";
     }
 
     public void IncreaseAttackDelayButton()

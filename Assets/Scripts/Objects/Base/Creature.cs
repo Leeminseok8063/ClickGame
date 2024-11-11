@@ -5,6 +5,7 @@ using static Defines;
 
 public class Creature : MonoBehaviour, ICreature, IDamagable, ISpawnable
 {
+    protected BoxCollider2D bx2d;
     protected Defines.OBJECTSTATE state = Defines.OBJECTSTATE.NONE;
     protected Animator animator;
     public CreatureData objectData;
@@ -46,6 +47,7 @@ public class Creature : MonoBehaviour, ICreature, IDamagable, ISpawnable
         maxSkillCounter = objectData.skillCount;
         currentSkillCounter = maxSkillCounter;
         animator = GetComponentInChildren<Animator>();
+        bx2d = GetComponent<BoxCollider2D>();
 
         switch(objectData.combatType)
         {

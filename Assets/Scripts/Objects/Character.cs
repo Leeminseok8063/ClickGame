@@ -72,6 +72,12 @@ public class Character : Creature
         target.TakeDamage(damage);
     }
 
+    public IEnumerator Skill()
+    {
+        //TODO : 스킬 사용
+        yield return null;
+    }
+
     public IEnumerator Exit()
     {
         Vector3 temp = destPos;

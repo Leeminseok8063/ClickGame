@@ -14,12 +14,12 @@ public class GameManager : Singleton<GameManager>
 
     public int treasureCount = 300000;
     public int priceGetChar = 10000;
-    public float test = 0;
     
     public void Init()
     {
         GameObject inputModule = Instantiate(Resources.Load<GameObject>("Prefabs/03.Module/InputModule"));
         inputModule.transform.parent = this.transform;
+        
         inputController = inputModule.GetComponent<InputController>();
         charController = this.gameObject.AddComponent<CharController>();
     }

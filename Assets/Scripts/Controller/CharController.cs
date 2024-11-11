@@ -35,6 +35,7 @@ namespace Assets.Scripts.Controller
             if(GameManager.Instance.UseTreasure(increaseCost))
             {
                 targetObject.maxHealth += increaseHealthVal;
+                targetObject.currentHealth = targetObject.maxHealth;
             }
             
             return targetObject.maxHealth;

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa7020f6f1d93e469fe3071ed2e0636, type: 3}
   m_Name: Char4
   m_EditorClassIdentifier: 
-  creatureName: "\uC7A5\uAD50"
-  creatureDesc: "\uAE30\uC0AC\uB4E4\uC744 \uC9C0\uD718\uD558\uB294 \uC7A5\uAD50\uC774\uB2E4."
+  creatureName: "\uAE30\uC0AC\uB2E8\uC7A5"
+  creatureDesc: "\uAE30\uC0AC\uB4E4\uC744 \uC9C0\uD718\uD558\uB294 \uC7A5\uAD50\uC785\uB2C8\uB2E4,
+    \uC5EC\uB85C\uBAA8\uB85C \uB6F0\uC5B4\uB0A9\uB2C8\uB2E4!"
   health: 500
   damage: 25
   attackDelay: 3

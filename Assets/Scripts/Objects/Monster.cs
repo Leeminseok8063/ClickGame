@@ -7,6 +7,7 @@ using UnityEngine;
 public class Monster : Creature
 {
     int currentReward;
+    
     private void Update()
     {
         UpdateMove();     
@@ -35,8 +36,16 @@ public class Monster : Creature
             currentHealth = Mathf.Max(currentHealth - damage, 0f);
             UIManager.Instance.MainUIPanel.UpdateMobHealthBar(currentHealth / maxHealth);
             GameManager.Instance.GetTreasure((int)(currentReward * 0.001));
+
+            
+            SpawnManager.Instance.SpawnEffect(Defines.PARTICLETYPE.BLOOD, bx2d.bounds.center);
             if (currentHealth == 0) StartCoroutine(Dead());
         }      
+    }
+
+    private void Attack()
+    {
+        //TODO : 몬스터 공격기능
     }
 
     private IEnumerator Dead()

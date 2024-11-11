@@ -11,8 +11,7 @@ public class InputController : MonoBehaviour
 
     private void Start()
     {
-        clickActorLayer += LayerMask.GetMask("Char");
-        clickActorLayer += LayerMask.GetMask("Mob");
+        clickActorLayer += LayerMask.GetMask("Char", "Mob");
     }
 
     public void OnMouseClicked(InputAction.CallbackContext context)
@@ -42,8 +41,6 @@ public class InputController : MonoBehaviour
         else
         {
             currentClickActor = null;
-        }
-        
-        
+        }        
     }
 }

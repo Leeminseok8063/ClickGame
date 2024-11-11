@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Char6
   m_EditorClassIdentifier: 
   creatureName: "\uC790\uC5F0 \uB9C8\uBC95\uC0AC"
-  creatureDesc: "\uC778\uB958\uB97C \uCE58\uC720\uD558\uB294 \uB9C8\uBC95\uC0AC."
+  creatureDesc: "\uC544\uAD70\uC744 \uCE58\uC720\uD574\uC8FC\uB294 \uB9C8\uBC95\uC0AC\uC785\uB2C8\uB2E4"
   health: 100
   damage: 5
   attackDelay: 8
   skillCount: 15
   combatType: 3
-  skillType: 4
+  skillType: 1
   reward: 0

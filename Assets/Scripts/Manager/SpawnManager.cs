@@ -7,6 +7,7 @@ public class SpawnManager : Singleton<SpawnManager>
     private Dictionary<string, ObjectPool> pools = new Dictionary<string, ObjectPool>();
     private int charCount;
     private int mobCount;
+    private int effectCount;
 
     public int CharCount { get { return charCount; } }
     public int MobCount { get { return mobCount; } }
@@ -15,10 +16,13 @@ public class SpawnManager : Singleton<SpawnManager>
     {
         List<GameObject> charList = ObjectManager.Instance.GetChars();
         List<GameObject> mobList = ObjectManager.Instance.GetMobs(); 
+        List<GameObject> effectList = ObjectManager.Instance.GetEffects(); 
         CreateTypeOfPool("Char", charList);
         CreateTypeOfPool("Mob", mobList);
+        CreateTypeOfPool("Effect", effectList);
         charCount = charList.Count;
         mobCount = mobList.Count;
+        effectCount = effectList.Count;
     }
 
     private void CreateTypeOfPool(string typeName, List<GameObject> lists)
@@ -62,8 +66,14 @@ public class SpawnManager : Singleton<SpawnManager>
         Player.GetComponent<Character>().CapsuleIndex = positionIndex;
         return Player;
     }
+
+    public void SpawnEffect(Defines.PARTICLETYPE typeID, Vector3 pos)
+    {
+        GameObject temp = pools[$"Effect{(int)typeID}"].Spawn();
+        temp.GetComponent<ISpawnable>().IsSpawned(pos, pos);
+    }
   
-    public GameObject Spawn(string name, Vector3 start, Vector3 dest)
+    private GameObject Spawn(string name, Vector3 start, Vector3 dest)
     {
         GameObject temp = pools[name].Spawn();
         temp.GetComponent<ISpawnable>().IsSpawned(start, dest);

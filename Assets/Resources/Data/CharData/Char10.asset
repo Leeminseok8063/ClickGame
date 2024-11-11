@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Char10
   m_EditorClassIdentifier: 
   creatureName: "\uADC0\uC871 \uAE30\uC0AC\uB2E8"
-  creatureDesc: "\uC81C\uAD6D\uC758 \uADC0\uC871\uC758 \uC790\uC81C\uB85C \uC774\uB8E8\uC5B4\uC9C4
-    \uADC0\uC871 \uAE30\uC0AC\uB300"
+  creatureDesc: "\uC81C\uAD6D \uADC0\uC871\uB4E4\uC758 \uBAA8\uBC94\uC785\uB2C8\uB2E4!"
   health: 250
   damage: 60
   attackDelay: 20
