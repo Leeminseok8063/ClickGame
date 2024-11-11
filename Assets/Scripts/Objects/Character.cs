@@ -64,7 +64,7 @@ public class Character : Creature
             currentSkillCounter = maxSkillCounter;
             behaviorLock = true;
             yield return new WaitForSeconds(1f);
-            target.TakeDamage(damage * 10);
+            target.TakeDamage(damage * 30);
             behaviorLock = false;
             yield break;
         }

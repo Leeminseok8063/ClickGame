@@ -96,6 +96,7 @@ public class Creature : MonoBehaviour, ICreature, IDamagable, ISpawnable
     }
     public virtual void IsSpawned(Vector3 start, Vector3 dest)
     {
+        state = OBJECTSTATE.NONE;
         //NONE
     }
 }

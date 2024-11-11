@@ -12,11 +12,12 @@ public class GameManager : Singleton<GameManager>
     public Dictionary<int, GameObject> currentPlayers = new Dictionary<int, GameObject>();
     public GameObject currentMonster;
 
-    public int coinCount = 300000;
+    public int coinCount = 10000;
     public int priceGetChar = 10000;
     
     public void Init()
     {
+        Application.targetFrameRate = 60;
         GameObject inputModule = Instantiate(Resources.Load<GameObject>("Prefabs/03.Module/InputModule"));
         inputModule.transform.parent = this.transform;
         
@@ -37,13 +38,14 @@ public class GameManager : Singleton<GameManager>
 
     public GameObject GetChar(int id = -1)
     {
-        if (id == -1 && coinCount < priceGetChar) return new GameObject();
-
+        if (id == -1 && coinCount < priceGetChar) return null;
         GameObject spawned = null;   
+        
         if(id == -1)
         {
             spawned = SpawnManager.Instance.SpawnChar(Random.Range(1, SpawnManager.Instance.CharCount + 1));
-            UseCoin(priceGetChar);
+            if (spawned == null) return null;           
+            else UseCoin(priceGetChar);
         }
         else
         {
