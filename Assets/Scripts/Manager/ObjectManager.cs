@@ -62,6 +62,7 @@ public class ObjectManager : Singleton<ObjectManager>
         foreach(GameObject obj in objects)
         {
             GameObject temp = Instantiate(obj);
+            temp.SetActive(false);
             temp.AddComponent<Effect>();
             temp.transform.parent = this.transform;
 

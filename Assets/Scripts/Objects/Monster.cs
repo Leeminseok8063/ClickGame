@@ -37,7 +37,7 @@ public class Monster : Creature
             UIManager.Instance.MainUIPanel.UpdateMobHealthBar(currentHealth / maxHealth);
             GameManager.Instance.GetTreasure((int)(currentReward * 0.001));
 
-            
+            SoundManager.Instance.PlaySound(Defines.SOUNDTYPE.DAMAGED, 0.02f);
             SpawnManager.Instance.SpawnEffect(Defines.PARTICLETYPE.BLOOD, bx2d.bounds.center);
             if (currentHealth == 0) StartCoroutine(Dead());
         }      

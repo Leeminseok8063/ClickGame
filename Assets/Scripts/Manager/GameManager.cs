@@ -28,6 +28,7 @@ public class GameManager : Singleton<GameManager>
     {
         NextPhase();
         GetChar();
+        SoundManager.Instance.PlayBGM(Defines.SOUNDTYPE.BGM, 0.5f);
     } 
 
     public void GetChar()

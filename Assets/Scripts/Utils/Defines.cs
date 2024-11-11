@@ -37,5 +37,12 @@ public class Defines : MonoBehaviour
         NONE,
         BLOOD,
     }
+
+    public enum SOUNDTYPE
+    {
+        BTCLICK,
+        DAMAGED,
+        BGM,
+    }
     
 }
