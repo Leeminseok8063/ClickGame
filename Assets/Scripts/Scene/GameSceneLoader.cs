@@ -11,5 +11,6 @@ public class GameSceneLoader : MonoBehaviour
         PositionManager.Instance.Init(); 
         UIManager.Instance.Init();
         SoundManager.Instance.Init();
+        IOManager.Instance.Init();
     }
 }

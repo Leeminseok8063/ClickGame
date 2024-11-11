@@ -23,7 +23,7 @@ public class MainUIModule : MonoBehaviour
 
     public void UpdateUserTreasueUpdate()
     {
-        userTreasureValText.text = GameManager.Instance.treasureCount.ToString();
+        userTreasureValText.text = GameManager.Instance.coinCount.ToString();
     }
 
     public void UpdateMobNameText(string name)
@@ -87,5 +87,10 @@ public class MainUIModule : MonoBehaviour
         GameManager.Instance.charController.ReturnTargetChar();
         SoundManager.Instance.PlaySound(Defines.SOUNDTYPE.BTCLICK, 0.8f);
         ExitStatePanel();
+    }
+
+    public void SaveButton()
+    {
+        IOManager.Instance.Save();
     }
 }

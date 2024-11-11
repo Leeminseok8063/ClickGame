@@ -35,7 +35,7 @@ public class Monster : Creature
             animator.SetTrigger(isDamaged);
             currentHealth = Mathf.Max(currentHealth - damage, 0f);
             UIManager.Instance.MainUIPanel.UpdateMobHealthBar(currentHealth / maxHealth);
-            GameManager.Instance.GetTreasure((int)(currentReward * 0.001));
+            GameManager.Instance.GetCoin((int)(currentReward * 0.001));
 
             SoundManager.Instance.PlaySound(Defines.SOUNDTYPE.DAMAGED, 0.02f);
             SpawnManager.Instance.SpawnEffect(Defines.PARTICLETYPE.BLOOD, bx2d.bounds.center);
@@ -52,7 +52,7 @@ public class Monster : Creature
     {
         animator.SetTrigger(isDead);
         state = Defines.OBJECTSTATE.DEAD;
-        GameManager.Instance.GetTreasure(currentReward);
+        GameManager.Instance.GetCoin(currentReward);
         
         yield return new WaitForSeconds(4f);
         SpawnManager.Instance.Despawn(this.gameObject);

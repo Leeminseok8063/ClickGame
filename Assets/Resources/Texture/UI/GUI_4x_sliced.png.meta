@@ -4667,7 +4667,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_4x_sliced_217
+      name: SaveIcon
       rect:
         serializedVersion: 2
         x: 112
@@ -4917,7 +4917,6 @@ TextureImporter:
       GUI_4x_sliced_213: 948416400
       GUI_4x_sliced_214: 933270757
       GUI_4x_sliced_216: 1191576629
-      GUI_4x_sliced_217: 1345343958
       GUI_4x_sliced_219: 894780490
       GUI_4x_sliced_22: 1395431725
       GUI_4x_sliced_220: -1699991658
@@ -5004,6 +5003,7 @@ TextureImporter:
       GUI_4x_sliced_97: -1505587839
       GUI_4x_sliced_98: 1006788085
       GUI_4x_sliced_99: -94083479
+      SaveIcon: 1345343958
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

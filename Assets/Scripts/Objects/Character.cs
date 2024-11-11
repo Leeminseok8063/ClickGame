@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Character : Creature
 {
+    private int id;
     private int capsuleIndex;
     private float localTimer;
 
     public int CapsuleIndex { get { return capsuleIndex; } set { capsuleIndex = value; } }
+    public int ID { get { return id; } set { id = value; } }
 
     private void Update()
     {

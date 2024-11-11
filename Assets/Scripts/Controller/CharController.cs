@@ -32,7 +32,7 @@ namespace Assets.Scripts.Controller
         
         public float IncreaseHealth()
         {
-            if(GameManager.Instance.UseTreasure(increaseCost))
+            if(GameManager.Instance.UseCoin(increaseCost))
             {
                 targetObject.maxHealth += increaseHealthVal;
                 targetObject.currentHealth = targetObject.maxHealth;
@@ -43,7 +43,7 @@ namespace Assets.Scripts.Controller
 
         public float IncreaseAttackDelay()
         {
-            if (GameManager.Instance.UseTreasure(increaseCost))
+            if (GameManager.Instance.UseCoin(increaseCost))
             {
                 targetObject.attackDelay -= increaseDelayVal;
             }
@@ -52,7 +52,7 @@ namespace Assets.Scripts.Controller
 
         public float IncreaseDamage()
         {
-            if (GameManager.Instance.UseTreasure(increaseCost))
+            if (GameManager.Instance.UseCoin(increaseCost))
             {
                 targetObject.damage += increaseDamagehVal;
             }

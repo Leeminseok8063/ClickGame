@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fa7020f6f1d93e469fe3071ed2e0636, type: 3}
+  m_Name: Char16
+  m_EditorClassIdentifier: 
+  creatureName: "\uB3D9\uBD80 \uC6A9\uBCD1"
+  creatureDesc: "\uB3D9\uBD80 \uC220\uD0C4\uAD6D\uC758 \uC6A9\uBCD1 \uC804\uC0AC\uC785\uB2C8\uB2E4"
+  health: 320
+  damage: 35
+  attackDelay: 4
+  skillCount: 10
+  combatType: 1
+  skillType: 3
+  reward: 0

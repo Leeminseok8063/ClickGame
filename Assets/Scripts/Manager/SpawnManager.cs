@@ -64,6 +64,7 @@ public class SpawnManager : Singleton<SpawnManager>
         );
 
         Player.GetComponent<Character>().CapsuleIndex = positionIndex;
+        Player.GetComponent<Character>().ID = id;
         return Player;
     }
 

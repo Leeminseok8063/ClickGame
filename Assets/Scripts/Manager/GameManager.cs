@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    private int currentLevel = 0;
+    public int currentLevel = 0;
     public InputController inputController;
     public CharController charController;
 
     public Dictionary<int, GameObject> currentPlayers = new Dictionary<int, GameObject>();
     public GameObject currentMonster;
 
-    public int treasureCount = 300000;
+    public int coinCount = 300000;
     public int priceGetChar = 10000;
     
     public void Init()
@@ -26,21 +26,33 @@ public class GameManager : Singleton<GameManager>
 
     public void Start()
     {
-        NextPhase();
-        GetChar();
+        if(!IOManager.Instance.Load())
+        {
+            NextPhase();
+            GetChar();
+        }    
+        
         SoundManager.Instance.PlayBGM(Defines.SOUNDTYPE.BGM, 0.5f);
     } 
 
-    public void GetChar()
+    public GameObject GetChar(int id = -1)
     {
-        if (treasureCount < priceGetChar) return;
+        if (id == -1 && coinCount < priceGetChar) return new GameObject();
 
-        GameObject spawned = SpawnManager.Instance.SpawnChar(Random.Range(1, SpawnManager.Instance.CharCount + 1));
-        if (spawned == null) return;
+        GameObject spawned = null;   
+        if(id == -1)
+        {
+            spawned = SpawnManager.Instance.SpawnChar(Random.Range(1, SpawnManager.Instance.CharCount + 1));
+            UseCoin(priceGetChar);
+        }
+        else
+        {
+            spawned = SpawnManager.Instance.SpawnChar(id); // 지정 생성 (저장파일 로드) 관련..
+        }
 
         Character spChar = spawned.GetComponent<Character>();
         currentPlayers.Add(spChar.CapsuleIndex, spawned);
-        UseTreasure(priceGetChar);
+        return spawned;
     }
 
     public void ExitChar(GameObject charObject)
@@ -61,17 +73,22 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public bool UseTreasure(int val)
+    public bool UseCoin(int val)
     {
-        if (treasureCount < val) return false;
-        treasureCount -= val;
+        if (coinCount < val) return false;
+        coinCount -= val;
         UIManager.Instance.MainUIPanel.UpdateUserTreasueUpdate();
         return true;
     }
 
-    public void GetTreasure(int val)
+    public void GetCoin(int val)
     {
-        treasureCount += val;
+        coinCount += val;
         UIManager.Instance.MainUIPanel.UpdateUserTreasueUpdate();
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
