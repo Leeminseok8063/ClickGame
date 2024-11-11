@@ -58,5 +58,13 @@ namespace Assets.Scripts.Controller
             return targetObject.damage;
         }
 
+        public void ReturnTargetChar()
+        {
+            if(targetObject)
+            {
+                GameManager.Instance.ExitChar(targetObject.gameObject);
+            }
+        }
+
     }
 }

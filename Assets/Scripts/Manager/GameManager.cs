@@ -12,7 +12,7 @@ public class GameManager : Singleton<GameManager>
     public Dictionary<int, GameObject> currentPlayers = new Dictionary<int, GameObject>();
     public GameObject currentMonster;
 
-    public int treasureCount = 10000;
+    public int treasureCount = 300000;
     public int priceGetChar = 10000;
     public float test = 0;
     

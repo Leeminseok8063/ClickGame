@@ -74,4 +74,10 @@ public class MainUIModule : MonoBehaviour
     {
         attackDamageText.text = GameManager.Instance.charController.IncreaseDamage().ToString();
     }
+
+    public void ExitCharButton()
+    {
+        GameManager.Instance.charController.ReturnTargetChar();
+        ExitStatePanel();
+    }
 }
