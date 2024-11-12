@@ -10,7 +10,7 @@ public class GameManager : Singleton<GameManager>
     public Dictionary<int, GameObject> currentPlayers = new Dictionary<int, GameObject>();
     public GameObject currentMonster;
 
-    public int coinCount = 100000;//재화
+    public int coinCount = 10000;//재화
     public void Init()
     {
         Application.targetFrameRate = 60;
