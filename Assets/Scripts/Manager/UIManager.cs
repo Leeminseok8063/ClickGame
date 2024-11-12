@@ -1,26 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.Manager
+public class UIManager : Singleton<UIManager>
 {
-    public class UIManager : Singleton<UIManager>
+    public MainUIModule MainUIPanel;
+    public bool isOpenPanel = false;
+    public void Init()
     {
-        public MainUIModule MainUIPanel;
-        public bool isPanel = false;
-        public void Init()
-        {
-            GameObject mainModule = Instantiate(Resources.Load<GameObject>("Prefabs/03.Module/MainUIModule"));
-            mainModule.transform.parent = transform;
-            MainUIPanel = mainModule.GetComponent<MainUIModule>();
-        }
+        GameObject mainModule = Instantiate(Resources.Load<GameObject>("Prefabs/03.Module/MainUIModule"));
+        mainModule.transform.parent = transform;
+        MainUIPanel = mainModule.GetComponent<MainUIModule>();
+    }
 
-        public void IsPanel(bool state)
-        {
-            isPanel = state;
-        }
+    /// <summary>
+    /// 패널을 팝업할때 호출하면 다른 입력을 차단합니다.
+    /// </summary>
+    /// <param name="state"></param>
+    public void OpenPanel(bool state)
+    {
+        isOpenPanel = state;
     }
 }

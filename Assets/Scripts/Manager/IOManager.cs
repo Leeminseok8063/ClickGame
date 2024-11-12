@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Manager;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -50,7 +49,7 @@ public class IOManager : Singleton<IOManager>
         while(!sr.EndOfStream)
         {
             string[] charData = sr.ReadLine().Split(",");
-            Character tempChar = GameManager.Instance.GetChar(int.Parse(charData[0])).GetComponent<Character>();
+            Character tempChar = GameManager.Instance.charController.GetChar(int.Parse(charData[0])).GetComponent<Character>();
             tempChar.maxHealth = float.Parse(charData[1]);
             tempChar.currentHealth = tempChar.maxHealth;
             tempChar.damage = float.Parse(charData[2]);

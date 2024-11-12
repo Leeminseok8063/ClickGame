@@ -1,6 +1,3 @@
-using Assets.Scripts.Manager;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,28 +35,28 @@ public class MainUIModule : MonoBehaviour
 
     public void SpawnCharButton()
     {
-        GameManager.Instance.GetChar();
-        SoundManager.Instance.PlaySound(Defines.SOUNDTYPE.BTCLICK, 0.8f);
+        GameManager.Instance.charController.GetChar();
+        SoundManager.Instance.PlaySound(Defines.SOUNDTYPE.BTCLICK);
     }
 
     public void PopUpStatePanel(Character target)
     {
-        UIManager.Instance.IsPanel(true);
+        UIManager.Instance.OpenPanel(true);
         statePanel.SetActive(true);
         nameText.text = target.objectData.creatureName;
         descText.text = target.objectData.creatureDesc;
         healthText.text = $"{target.currentHealth}/{target.maxHealth}";
         attackDamageText.text = target.damage.ToString();
         attackDelayText.text = target.attackDelay.ToString();
-        SoundManager.Instance.PlaySound(Defines.SOUNDTYPE.BTCLICK, 0.8f);
+        SoundManager.Instance.PlaySound(Defines.SOUNDTYPE.BTCLICK);
     }
 
     public void ExitStatePanel()
     {
-        UIManager.Instance.IsPanel(false);
+        UIManager.Instance.OpenPanel(false);
         statePanel.SetActive(false);
         GameManager.Instance.charController.EraseTargetObject();
-        SoundManager.Instance.PlaySound(Defines.SOUNDTYPE.BTCLICK, 0.8f);
+        SoundManager.Instance.PlaySound(Defines.SOUNDTYPE.BTCLICK);
     }
 
     public void IncreaseHealthButton()
@@ -67,25 +64,25 @@ public class MainUIModule : MonoBehaviour
         Character target = GameManager.Instance.charController.targetObject;
         float maxHealth = GameManager.Instance.charController.IncreaseHealth();
         healthText.text = $"{target.currentHealth}/{maxHealth}";
-        SoundManager.Instance.PlaySound(Defines.SOUNDTYPE.BTCLICK, 0.8f);
+        SoundManager.Instance.PlaySound(Defines.SOUNDTYPE.BTCLICK);
     }
 
     public void IncreaseAttackDelayButton()
     {
         attackDelayText.text = GameManager.Instance.charController.IncreaseAttackDelay().ToString();
-        SoundManager.Instance.PlaySound(Defines.SOUNDTYPE.BTCLICK, 0.8f);
+        SoundManager.Instance.PlaySound(Defines.SOUNDTYPE.BTCLICK);
     }
 
     public void IncreaseAttackDamageButton()
     {
         attackDamageText.text = GameManager.Instance.charController.IncreaseDamage().ToString();
-        SoundManager.Instance.PlaySound(Defines.SOUNDTYPE.BTCLICK, 0.8f);
+        SoundManager.Instance.PlaySound(Defines.SOUNDTYPE.BTCLICK);
     }
 
     public void ExitCharButton()
     {
-        GameManager.Instance.charController.ReturnTargetChar();
-        SoundManager.Instance.PlaySound(Defines.SOUNDTYPE.BTCLICK, 0.8f);
+        GameManager.Instance.charController.ExitChar();
+        SoundManager.Instance.PlaySound(Defines.SOUNDTYPE.BTCLICK);
         ExitStatePanel();
     }
 

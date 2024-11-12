@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 
-internal class SoundManager : Singleton<SoundManager>
+public class SoundManager : Singleton<SoundManager>
 {
     private List<AudioClip> audioClips;
     private AudioSource audioSource;
@@ -18,7 +17,7 @@ internal class SoundManager : Singleton<SoundManager>
         audioSource = this.gameObject.AddComponent<AudioSource>();
     }
 
-    public void PlaySound(Defines.SOUNDTYPE type, float volumeScale)
+    public void PlaySound(Defines.SOUNDTYPE type)
     {
         audioSource.PlayOneShot(audioClips[(int)type]);
     }

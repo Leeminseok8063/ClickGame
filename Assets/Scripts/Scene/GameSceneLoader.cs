@@ -1,4 +1,3 @@
-using Assets.Scripts.Manager;
 using UnityEngine;
 
 public class GameSceneLoader : MonoBehaviour

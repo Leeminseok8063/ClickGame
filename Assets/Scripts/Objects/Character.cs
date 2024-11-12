@@ -27,12 +27,7 @@ public class Character : Creature
     {
         base.init();
         base.IsSpawned(start, dest);
-        GameManager.Instance.inputController.MouseClicked += ClickAction;
-
-        startPos = start;
-        destPos = dest;
-        dist = destPos - startPos;
-        transform.position = startPos;
+        GameManager.Instance.inputController.MouseClicked += ClickAction;      
     }
 
     public void ClickAction()
@@ -90,6 +85,6 @@ public class Character : Creature
         yield return new WaitForSeconds(2f);
         
         SpawnManager.Instance.Despawn(this.gameObject);
-        PositionManager.Instance.CapsuleEmpty[capsuleIndex] = true;
+        PositionManager.Instance.ReturnAcess(capsuleIndex);
     }
 }

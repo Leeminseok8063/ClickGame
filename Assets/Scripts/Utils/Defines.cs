@@ -31,7 +31,6 @@ public class Defines : MonoBehaviour
         DEAD,
     }
 
-
     public enum PARTICLETYPE
     {
         NONE,

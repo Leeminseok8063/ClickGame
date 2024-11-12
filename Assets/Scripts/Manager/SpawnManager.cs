@@ -35,6 +35,11 @@ public class SpawnManager : Singleton<SpawnManager>
         }
     }
 
+    /// <summary>
+    /// 몬스터를 스폰합니다.
+    /// </summary>
+    /// <param name="level"></param>
+    /// <returns></returns>
     public GameObject SpawnMonster(int level)
     {
          GameObject Monster = Spawn
@@ -47,6 +52,11 @@ public class SpawnManager : Singleton<SpawnManager>
         return Monster;
     }
 
+    /// <summary>
+    /// 캐릭터를 스폰합니다.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public GameObject SpawnChar(int id)
     {
         int positionIndex = PositionManager.Instance.GetEmptyAcess();
@@ -68,6 +78,11 @@ public class SpawnManager : Singleton<SpawnManager>
         return Player;
     }
 
+    /// <summary>
+    /// 파티클을 스폰합니다.
+    /// </summary>
+    /// <param name="typeID"></param>
+    /// <param name="pos"></param>
     public void SpawnEffect(Defines.PARTICLETYPE typeID, Vector3 pos)
     {
         GameObject temp = pools[$"Effect{(int)typeID}"].Spawn();
@@ -81,6 +96,10 @@ public class SpawnManager : Singleton<SpawnManager>
         return temp;
     }
 
+    /// <summary>
+    /// 스폰된 오브젝트를 디스폰 합니다.
+    /// </summary>
+    /// <param name="_object"></param>
     public void Despawn(GameObject _object)
     {
         pools[_object.name].Despawn(_object);

@@ -36,6 +36,7 @@ public class ObjectManager : Singleton<ObjectManager>
     public List<GameObject> GetMobs(){ return mobList; }
     public List<GameObject> GetEffects(){ return effectList; }
 
+    //불러온 크리처 프리팹의 데이터를 설정합니다.
     private List<GameObject> SetCreature<T>(GameObject[] objects, ScriptableObject[] datas)
     {
         int currentIndex = 0;
@@ -56,6 +57,7 @@ public class ObjectManager : Singleton<ObjectManager>
         return tempList;
     }
     
+    //불러온 파티클 프리팹의 데이터를 설정합니다.
     private List<GameObject> SetEffect(GameObject[] objects)
     {
         List<GameObject> tempList = new List<GameObject>();

@@ -50,5 +50,9 @@ public class PositionManager : Singleton<PositionManager>
         return -1;
     }
 
+    /// <summary>
+    /// 특정 자리 인덱스를 이용해 캐릭터가 제거 될때 자리를 반납 합니다.
+    /// </summary>
+    /// <param name="index"></param>
     public void ReturnAcess(int index) { capsuleEmpty[index] = true; }
 }

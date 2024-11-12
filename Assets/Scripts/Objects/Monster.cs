@@ -1,7 +1,4 @@
-using Assets.Scripts.Manager;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Monster : Creature
@@ -20,11 +17,6 @@ public class Monster : Creature
         currentReward = objectData.reward;
         UIManager.Instance.MainUIPanel.UpdateMobHealthBar(currentHealth / maxHealth);
         UIManager.Instance.MainUIPanel.UpdateMobNameText(objectData.creatureName);
-
-        startPos = start;
-        destPos = dest;
-        dist = destPos - startPos;
-        transform.position = startPos;
     }
 
     public override void TakeDamage(float damage)
@@ -37,7 +29,7 @@ public class Monster : Creature
             UIManager.Instance.MainUIPanel.UpdateMobHealthBar(currentHealth / maxHealth);
             GameManager.Instance.GetCoin((int)(currentReward * 0.001));
 
-            SoundManager.Instance.PlaySound(Defines.SOUNDTYPE.DAMAGED, 0.02f);
+            SoundManager.Instance.PlaySound(Defines.SOUNDTYPE.DAMAGED);
             SpawnManager.Instance.SpawnEffect(Defines.PARTICLETYPE.BLOOD, bx2d.bounds.center);
             if (currentHealth == 0) StartCoroutine(Dead());
         }      

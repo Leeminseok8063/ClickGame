@@ -1,4 +1,3 @@
-using Assets.Scripts.Manager;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,7 +15,7 @@ public class InputController : MonoBehaviour
 
     public void OnMouseClicked(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started && !UIManager.Instance.isPanel)
+        if(context.phase == InputActionPhase.Started && !UIManager.Instance.isOpenPanel)
         {
             CastingClickPosition();
             MouseClicked?.Invoke();
@@ -30,17 +29,22 @@ public class InputController : MonoBehaviour
         if (hit.collider != null)
         {
             currentClickActor = hit.collider.gameObject;
-            if (hit.collider.gameObject.TryGetComponent<Character>(out Character charObject))
-            {
-                if (!GameManager.Instance.charController.beingSetting)
-                {
-                    GameManager.Instance.charController.SetTargetObject(charObject);
-                }
-            }
+            isCharClicked(currentClickActor);
         }
         else
         {
             currentClickActor = null;
         }        
+    }
+
+    private void isCharClicked(GameObject temp)
+    {
+        if (temp.TryGetComponent<Character>(out Character charObject))
+        {
+            if (!GameManager.Instance.charController.beingSetting)
+            {
+                GameManager.Instance.charController.SetTargetObject(charObject);
+            }
+        }
     }
 }
