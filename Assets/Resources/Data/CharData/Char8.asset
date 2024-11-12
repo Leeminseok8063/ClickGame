@@ -16,7 +16,7 @@ MonoBehaviour:
   creatureDesc: "\uC7AC\uBE60\uB974\uAC8C \uC784\uBB34\uB97C \uC218\uD589\uD558\uB294
     \uC6A9\uBCD1\uC785\uB2C8\uB2E4"
   health: 350
-  damage: 25
+  damage: 13
   attackDelay: 1
   skillCount: 30
   combatType: 1
